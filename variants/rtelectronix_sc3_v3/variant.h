@@ -224,5 +224,12 @@ extern Uart Serial1;
 #define SERIAL_PORT_HARDWARE        Serial1
 #define SERIAL_PORT_HARDWARE_OPEN   Serial1
 
+#include "sc3_pins.h"
+#define _THREEWAY_CHORUS_
+#define PEDAL_MODEL_NO "SC-3"
+#define PEDAL_REVISION_MAJOR 3
+#define PEDAL_REVISION_MINOR 0
+#define _THREEWAY_CHORUS_REV_3_
+
 #endif /* _VARIANT_ARDUINO_ZERO_ */
 

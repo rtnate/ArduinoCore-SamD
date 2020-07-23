@@ -1,12 +1,12 @@
 {
     "configurations": [
         {
-            "name": "BOARD_SC3",
+            "name": "SAMD21_RT",
             "includePath": [
-                "${workspaceFolder}/cores/arduino/**",
-                "${workspaceFolder}/libraries/**",
-                "${workspaceFolder}/variants/rtelectronix_sc3_v3/**",
-                "E:\\source\\arduino\\libraries\\SoftwareLFO\\**",
+                "${workspaceFolder}/**",
+                "E:\\source\\arduino\\hardware\\rtnate\\sam\\cores\\arduino\\**",
+                "E:\\source\\arduino\\hardware\\rtnate\\sam\\libraries\\**",
+                "E:\\source\\arduino\\hardware\\rtnate\\sam\\variants\\feather_m0",
                 "C:\\Users\\User\\AppData\\Local\\Arduino15\\packages\\arduino\\tools\\CMSIS\\4.5.0\\CMSIS\\Include\\**",
                 "C:\\Users\\User\\AppData\\Local\\Arduino15\\packages\\arduino\\tools\\CMSIS-Atmel\\1.2.0\\CMSIS\\Device\\**",
                 "C:\\Users\\User\\AppData\\Local\\Arduino15\\packages\\arduino\\tools\\arm-none-eabi-gcc\\7-2017q4\\arm-none-eabi\\include\\**",
