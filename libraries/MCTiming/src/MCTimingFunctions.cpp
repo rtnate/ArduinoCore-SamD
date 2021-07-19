@@ -33,3 +33,14 @@ float MCTiming::CalculateTempoTimerBeatFraction(uint32_t tempo_cpu_ticks)
     uint32_t divisor = 1 << prescaler;
     return 1.f / ((float) divisor * MidiClocksPerBeat);
 }
+
+uint32_t MCTiming::getCPUTimestamp()
+{
+    uint32_t ticks = SysTick->VAL;
+    uint32_t ovf = SysTick->LOAD;
+    uint32_t ms = millis();
+    uint32_t time = ms * ovf;
+    uint32_t ts = ovf - ticks;
+    uint32_t systick_pending = !!(SCB->ICSR & SCB_ICSR_PENDSTSET_Msk);
+    return time + ts + systick_pending;
+}

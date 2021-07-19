@@ -48,6 +48,10 @@ namespace MCTiming
             float getBPM() const { return CPUTicksToBPM(ticks); };
             float getMilliseconds() const { return CPUTicksToMilliseconds(ticks); };
             uint32_t getTicks() const { return ticks; };
+            float getMidiClockMicroseconds() const 
+            {
+                return CPUTicksToMilliseconds(ticks) * 1000.f / 24.f;
+            }
             TempoPrescaler getPrescaler() const { return TempoPrescaler(CalculateTempoPrescaler(ticks)); };
             uint16_t getTimerPeriod() const { return CalculateTempoTimerPeriod(ticks); };
             float getBeatFraction() const { return CalculateTempoTimerBeatFraction(ticks); };

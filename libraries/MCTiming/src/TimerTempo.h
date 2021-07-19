@@ -10,13 +10,13 @@ namespace MCTiming
     class TimerTempo
     {
         public:
-            TimerTempo(): tTempo(Tempo::fromBPM(120)), tPrescaler(), tPeriod(), listener(nullptr)
+            TimerTempo(): listener(nullptr), tTempo(Tempo::fromBPM(120)), tPrescaler(), tPeriod() 
             {
                 tPrescaler = tTempo.getPrescaler();
                 tPeriod = tTempo.getTimerPeriod();
             }
-            TimerTempo(const Tempo& tempo): tTempo(tempo), tPrescaler(tempo.getPrescaler()), 
-                                            tPeriod(tempo.getTimerPeriod()), listener(nullptr){};
+            TimerTempo(const Tempo& tempo): listener(nullptr), tTempo(tempo), tPrescaler(tempo.getPrescaler()), 
+                                            tPeriod(tempo.getTimerPeriod()){};
             void attachListener(TimerTempoListener& newListener){ listener = &newListener; };
             void dettachListener(){ listener = nullptr; };
             void update(Tempo newTempo);

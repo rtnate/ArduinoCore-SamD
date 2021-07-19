@@ -107,6 +107,17 @@ namespace MCTiming
     }
 
     /**
+     * @brief Get the tempo in Beats Per Minute from the supplied time in microseconds
+     * 
+     * @param ms The period in microseconds
+     * @return constexpr float The tempo in Beats Per Minute
+     */
+    constexpr inline float MicrosecondsToBPM(float us)
+    {
+        return 60000000.f / us;
+    }
+
+    /**
      * @brief Get the number of CPU Ticks (cycles) from the supplied tempo in BPM
      * 
      * @param bpm The tempo in Beats Per Minute
@@ -162,5 +173,7 @@ namespace MCTiming
         //~~~ Single Line Expression for C++11 Compatability ~~~ 
         return ( (60.f) * (float)CPUFrequency ) / ticks;
     }
+
+    extern uint32_t getCPUTimestamp();
 }
 #endif
