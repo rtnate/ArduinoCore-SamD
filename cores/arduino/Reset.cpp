@@ -68,6 +68,20 @@ static void banzai() {
 	NVIC_SystemReset() ;
 
 	while (true);
+#elif defined(__SAMD21__) || defined(__SAMD21G18A__)
+	//THESE MUST MATCH THE BOOTLOADER
+	#define DOUBLE_TAP_MAGIC 			0xf01669efUL
+	#define BOOT_DOUBLE_TAP_ADDRESS     (HMCRAMC0_ADDR + HMCRAMC0_SIZE - 4)
+
+	unsigned long *a = (unsigned long *)BOOT_DOUBLE_TAP_ADDRESS;
+	*a = DOUBLE_TAP_MAGIC;
+	//NVMCTRL->ADDR.reg  = APP_START;
+	//NVMCTRL->CTRLB.reg = NVMCTRL_CTRLB_CMD_EB | NVMCTRL_CTRLB_CMDEX_KEY;
+	
+	// Reset the device
+	NVIC_SystemReset() ;
+
+	while (true);
 #else
 	
 	// Avoid erasing the application if APP_START is < than the minimum bootloader size
