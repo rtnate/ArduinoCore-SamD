@@ -6,15 +6,16 @@
 
 class RTCTimer 
 {
-    static void start()
-    {
-        RealTimeClock.begin(RTCMode::RTICKS, true);
-    }
+    public:
+        static void start()
+        {
+            RealTimeClock.begin(RTCMode::RTICKS, true);
+        }
 
-    static RTCTimerValue currentTime()
-    {
-        return RTCTimerValue(RealTimeClock.getCounter());
-    }
+        static RTCTimerValue currentTime()
+        {
+            return RTCTimerValue(RealTimeClock.getCounter());
+        }
 };
 
 #endif

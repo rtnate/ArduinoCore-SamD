@@ -114,7 +114,7 @@ void RTCManager::initRticks()
     config32kOSC(); // enable the 32K crystal oscillator
 
     // Setup clock GCLK2 with OSC32K divided by 32
-    configureClockStandard();
+    configureClockRticks();
     RTCdisable();
     RTCreset();
 
