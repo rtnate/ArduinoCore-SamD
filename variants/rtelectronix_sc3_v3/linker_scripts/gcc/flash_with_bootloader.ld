@@ -25,7 +25,8 @@
  */
 MEMORY
 {
-  FLASH (rx) : ORIGIN = 0x00000000+0x2000, LENGTH = 0x00040000-0x2000 /* First 8KB used by bootloader */
+  FLASH (rx) : ORIGIN = 0x00000000+0x2000, LENGTH = 0x00040000-0x6000 /* First 8KB used by bootloader last 16KB used by UserStorage*/
+  USER_STORAGE (rx) : ORIGIN = 0x00040000-0x4000, LENGTH = 0x4000 /* 8KB User Storage Reserved by Linker */
   RAM (rwx) : ORIGIN = 0x20000000, LENGTH = 0x00008000
 }
 
@@ -141,7 +142,17 @@ SECTIONS
 	} > FLASH
 	*/
 
+	
 	__etext = .;
+	
+	
+	.user_storage_array (NOLOAD): 
+	{
+		__user_storage_start__ = .;
+		FILL(0xFFFFFFFF)
+		KEEP(*(UserFlashArray))
+	} > USER_STORAGE
+
 
 	.data : AT (__etext)
 	{
